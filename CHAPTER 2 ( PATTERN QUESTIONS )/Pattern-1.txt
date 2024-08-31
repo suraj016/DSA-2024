@@ -1,0 +1,49 @@
+Example 1:
+Input: N = 3
+Output: 
+* * *
+* * *
+* * *
+
+
+Example 2:
+Input: N = 6
+Output:
+* * * * * *
+* * * * * *
+* * * * * *
+* * * * * *
+* * * * * *
+* * * * * *
+
+
+APPROACH
+
+1. for outer loop count the number of rows 
+2. for innner loop focus on
+   the coloumn and connect them with rows 
+3. print inside the inner loop 
+4. observe symmetry (optional) 
+
+
+class Main {
+    static void pattern1(int N)
+ {
+     
+     for (int i = 0; i < N; i++)
+     {
+         for (int j = 0; j < N; j++)
+         {
+             System.out.print("* ");
+         }
+ 
+         System.out.println();
+     }
+ }
+ 
+     public static void main(String[] args) {
+         
+         int N = 5;
+         pattern1(N);
+     }
+ }
