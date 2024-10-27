@@ -1,0 +1,41 @@
+import java.util.HashSet;
+
+public class HashSetIntegerExample {
+    public static void main(String[] args) {
+        // Create a HashSet for Integer values
+        HashSet<Integer> set = new HashSet<>();
+
+        // Add elements to the HashSet
+        set.add(10);
+        set.add(20);
+        set.add(30);
+        set.add(40);
+        set.add(10); // Duplicate, will not be added
+
+        // Display the HashSet after additions
+        System.out.println("HashSet after additions: " + set);
+
+        // Remove an element
+        set.remove(20);
+        System.out.println("HashSet after removing 20: " + set);
+
+        // Check if the set contains specific elements
+        boolean hasTen = set.contains(10); // Returns true
+        boolean hasTwenty = set.contains(20); // Returns false
+        boolean hasThirty = set.contains(30); // Returns true
+
+        System.out.println("Contains 10: " + hasTen); // Output: true
+        System.out.println("Contains 20: " + hasTwenty); // Output: false
+        System.out.println("Contains 30: " + hasThirty); // Output: true
+
+        // Get the size of the HashSet
+        int size = set.size();
+        System.out.println("Size of the HashSet: " + size); // Output: 3
+
+        // Iterate over the elements
+        System.out.println("Iterating over the HashSet:");
+        for (Integer number : set) {
+            System.out.println(number);
+        }
+    }
+}

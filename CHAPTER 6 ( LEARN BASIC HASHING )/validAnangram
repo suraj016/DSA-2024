@@ -1,0 +1,47 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+
+         // base case
+        if(s.length() != t.length()) {
+            return false;
+        }
+         
+        // initialized the new array and give size to 26 length
+        int[] arr = new int[26];
+        
+        // update and delete the char at given position
+        for(int i = 0; i < s.length(); i++) {
+            arr[s.charAt(i) - 'a']++;
+            arr[t.charAt(i) - 'a']--;
+        }
+         // check condition
+        for(int n : arr) {
+            if(n != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    ------------------------------------------------------------
+         
+        // conversion of string to array
+        char n1[]=s.toCharArray();
+        char n2[]=t.toCharArray();
+        // sort the array
+        Arrays.sort(n1);
+        Arrays.sort(n2);
+        
+        // convert sorted array to string 
+
+        s=Arrays.toString(n1);
+        t=Arrays.toString(n2);
+
+        // check if both the string are equal or not
+
+        if(s.equals(t))
+        {
+            return true;
+        }
+        return false;
+    }
+}

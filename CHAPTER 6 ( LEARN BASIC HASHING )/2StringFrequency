@@ -1,0 +1,43 @@
+/*
+ * Time complexity: O(n)
+   Space complexity: O(n)
+ */
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    
+    // Function to print character frequency
+    public static void printFrequency(String str) {
+        // Define a HashMap to store character frequencies
+        HashMap<Character, Integer> hm = new HashMap<>();
+
+        // Traverse the string
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            
+            // Update the frequency count
+            if(hm.containsKey(ch)){
+                int oldFrequency = hm.get(ch);
+                int newFrequency = oldFrequency + 1;
+                hm.put(ch, newFrequency);  // Update the map
+            } else {
+                hm.put(ch, 1); // if contains new frequency
+            }
+        }
+
+        // Traverse the map to print the frequency
+        for (Map.Entry<Character, Integer> entry : hm.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+    }
+
+    // Driver code
+    public static void main(String[] args) {
+        String str = "geeksforgeeks";
+
+        // Function call
+        printFrequency(str);
+    }
+}

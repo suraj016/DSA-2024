@@ -31,6 +31,8 @@ public class containsDuplicate{
         }
         return false;
 
+        // new topic started 
+
 
 
     }
