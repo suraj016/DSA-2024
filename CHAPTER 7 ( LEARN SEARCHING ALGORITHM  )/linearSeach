@@ -1,0 +1,47 @@
+Linear search is a simple search algorithm used to find a target element within a list or an array. 
+In linear search, we check each element of the list sequentially until we either find the target element or reach the end of the list.
+
+
+How Linear Search Works
+Start from the first element of the list.
+Compare the target element with the current element.
+If the current element matches the target, return its index.
+If not, move to the next element.
+Repeat this process until you either find the target element or reach the end of the list.
+If you reach the end without finding the target, return an indication that the target is not present (e.g., -1).
+Complexity of Linear Search
+Time Complexity: 
+𝑂 (𝑛)
+O(n) in the worst and average case, where 
+𝑛
+n is the number of elements in the list, because we may have to check every element.
+Space Complexity: 
+𝑂 (1)
+O(1) because no extra space is used beyond the input list.
+
+
+  code for linear search 
+
+  public class LinearSearch {
+    public static int linearSearch(int[] arr, int target) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return i; // Target found at index i
+            }
+        }
+        return -1; // Target not found
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {5, 3, 7, 9, 2};
+        int target = 7;
+        int result = linearSearch(arr, target);
+        
+        if (result != -1) {
+            System.out.println("Element found at index: " + result);
+        } else {
+            System.out.println("Element not found in the array.");
+        }
+    }
+}
+
