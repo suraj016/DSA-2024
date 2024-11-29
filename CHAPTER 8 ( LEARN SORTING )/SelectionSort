@@ -1,0 +1,41 @@
+public class SelectionSort {
+    public static void selectionSort(int[] arr) {
+        int n = arr.length;
+
+        // Traverse through all array elements
+        for (int i = 0; i < n - 1; i++) {
+            // Find the minimum element in the remaining unsorted array
+            int minIndex = i;
+            for (int j = i + 1; j < n; j++) { // first index fixed start with next element
+                if (arr[j] < arr[minIndex]) { // check for all element 
+                    minIndex = j; // put that smallest value to that jth element
+                }
+            }
+
+            // Swap the found minimum element with the first element of the unsorted part
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {64, 25, 12, 22, 11};
+
+        System.out.println("Original array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+
+        selectionSort(arr);
+
+        System.out.println("\nSorted array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}
+
+
+Time Complexity (TC):  O(n*2)   (best, worst, and average).
+Space Complexity (SC): O(1) (in-place sorting).
