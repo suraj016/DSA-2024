@@ -1,37 +1,25 @@
-public class InsertionSort {
-    public static void insertionSort(int[] arr) {
-        int n = arr.length;
-
-        // Start from the second element (index 1)
-        for (int i = 1; i < n; i++) {
-            int key = arr[i]; // Current element to be compared
+class Solution {
+    // Function to perform Insertion Sort on the given array
+    public void insertionSort(int[] nums) {
+        // Step 1: Iterate through the array starting from index 1
+        // The first element is considered to be already sorted
+        for (int i = 1; i < nums.length; i++) {
+            
+            // Step 2: Store the current element (key) to be inserted in the sorted part of the array
+            int key = nums[i];
+            
+            // Step 3: Initialize the variable 'j' to the previous index of 'i' (i-1)
             int j = i - 1;
-
-            // Move elements of the sorted portion that are greater than 'key'
-            // to one position ahead of their current position
-            while (j >= 0 && arr[j] > key) {
-                arr[j + 1] = arr[j];
-                j--;
+            
+            // Step 4: Move elements of the sorted portion of the array that are greater than 'key'
+            // one position to the right to make space for the 'key' element
+            while (j >= 0 && nums[j] > key) {
+                nums[j + 1] = nums[j];  // Move the larger element one position to the right
+                j--;  // Move to the previous element
             }
-
-            // Place the key at its correct position
-            arr[j + 1] = key;
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {64, 34, 25, 12, 22, 11, 90};
-
-        System.out.println("Original array:");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-
-        insertionSort(arr);
-
-        System.out.println("\nSorted array:");
-        for (int num : arr) {
-            System.out.print(num + " ");
+            
+            // Step 5: Insert the 'key' element at its correct position in the sorted portion
+            nums[j + 1] = key;
         }
     }
 }

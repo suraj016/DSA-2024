@@ -1,87 +1,39 @@
-public class BubbleSort {
-    public static void bubbleSort(int[] arr) {
-        int n = arr.length;
-        // Traverse the array
+Bubble Sort Algorithm:
+Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements,
+and swaps them if they are in the wrong order. The process is repeated until the list is sorted.
+
+
+T.C = O(n^2)
+
+
+
+
+
+
+
+
+
+class Solution {
+    // Function to perform Bubble Sort
+    public void bubbleSort(int[] nums) {
+        int n = nums.length; // Get the length of the array
+        
+        // Outer loop for the number of passes (n-1 passes required)
         for (int i = 0; i < n - 1; i++) {
-            // Last i elements are already sorted, so ignore them
-            for (int j = 0; j < n - i - 1; j++) {
-                // Swap if the element found is greater than the next element
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+            
+            // Inner loop for comparing adjacent elements
+            // We reduce the range of inner loop with each pass because after each pass,
+            // the largest element is already "bubbled" to the end.
+            for (int j = 0; j < n - 1 - i; j++) {
+                
+                // Compare adjacent elements (nums[j] and nums[j + 1])
+                if (nums[j] > nums[j + 1]) {
+                    // If the current element is greater than the next element, swap them
+                    int temp = nums[j];       // Store the current element in a temporary variable
+                    nums[j] = nums[j + 1];    // Assign the next element to the current element's position
+                    nums[j + 1] = temp;       // Place the original current element in the next position
                 }
             }
         }
     }
-
-    public static void main(String[] args) {
-        int[] arr = {64, 34, 25, 12, 22, 11, 90};
-
-        System.out.println("Original array:");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-
-        bubbleSort(arr);
-
-        System.out.println("\nSorted array:");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-    }
 }
-
-
-// OPTIMIZED BUBBLE SORT IF ARRAY IS ALREADY SORTED
-
-public class OptimizedBubbleSort {
-    public static void bubbleSort(int[] arr) {
-        int n = arr.length;
-        boolean swapped; // Flag to check if any swaps were made in a pass
-
-        // Traverse the array
-        for (int i = 0; i < n - 1; i++) {
-            swapped = false; // Reset swapped flag for each pass
-
-            // Perform bubble sort for the unsorted part
-            for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    // Swap adjacent elements if they are in the wrong order
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-
-                    swapped = true; // Mark as swapped
-                }
-            }
-
-            // If no swaps occurred, the array is already sorted
-            if (!swapped) {
-                break;
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {64, 34, 25, 12, 22, 11, 90};
-
-        System.out.println("Original array:");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-
-        bubbleSort(arr);
-
-        System.out.println("\nSorted array:");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-    }
-}
-
-
-
-Time Complexity = O(n*2)  in the worst and average cases; 
-O(n) in the best case (when the array is already sorted, with an optimized implementation).
-Space Complexity = O(1)

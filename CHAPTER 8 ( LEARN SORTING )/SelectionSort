@@ -1,40 +1,40 @@
-public class SelectionSort {
-    public static void selectionSort(int[] arr) {
-        int n = arr.length;
+Selection Sort is a simple comparison-based sorting algorithm that works by repeatedly selecting the smallest
+ (or largest, depending on the sorting order) element from the unsorted portion of the array and moving 
+ it to its correct position in the sorted portion.
 
-        // Traverse through all array elements
+
+
+
+
+class Solution {
+    // Function to perform Selection Sort
+    public void selectionSort(int[] nums) {
+        // Step 1: Get the length of the input array
+        int n = nums.length;  // Store the length of the array in the variable 'n'
+
+        // Step 2: Outer loop - Iterate through the entire array except the last element
         for (int i = 0; i < n - 1; i++) {
-            // Find the minimum element in the remaining unsorted array
-            int minIndex = i;
-            for (int j = i + 1; j < n; j++) { // first index fixed start with next element
-                if (arr[j] < arr[minIndex]) { // check for all element 
-                    minIndex = j; // put that smallest value to that jth element
+            // At the start of each iteration, assume that the element at index 'i' is the smallest
+            int minIndex = i;  // This will store the index of the smallest element found
+
+            // Step 3: Inner loop - Search for the smallest element in the unsorted part of the array
+            for (int j = i + 1; j < n; j++) {
+                // Compare the current element 'nums[j]' with the element at 'minIndex'
+                if (nums[j] < nums[minIndex]) {
+                    // If nums[j] is smaller, update 'minIndex' to the index 'j'
+                    minIndex = j;
                 }
             }
 
-            // Swap the found minimum element with the first element of the unsorted part
-            int temp = arr[minIndex];
-            arr[minIndex] = arr[i];
-            arr[i] = temp;
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {64, 25, 12, 22, 11};
-
-        System.out.println("Original array:");
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-
-        selectionSort(arr);
-
-        System.out.println("\nSorted array:");
-        for (int num : arr) {
-            System.out.print(num + " ");
+            // Step 4: Swap the smallest element found with the element at index 'i'
+            // If 'minIndex' is not equal to 'i', we perform a swap
+            int temp = nums[i];  // Store the value at index 'i' in a temporary variable
+            nums[i] = nums[minIndex];  // Place the smallest element in the correct sorted position at index 'i'
+            nums[minIndex] = temp;  // Place the original element from index 'i' in the position of 'minIndex'
         }
     }
 }
+
 
 
 Time Complexity (TC):  O(n*2)   (best, worst, and average).
