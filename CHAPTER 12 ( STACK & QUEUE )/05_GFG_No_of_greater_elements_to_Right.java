@@ -34,11 +34,43 @@ public class GreaterElementsToRight {
         return result;
     }
 
-    public static void main(String[] args) {
-        int[] arr = {3, 4, 2, 7, 5, 8, 10, 6};
-        int[] indices = {0, 5};
+
+ }
+
+
+
+ import java.util.*;
+
+public class GreaterElementsToRight {
+    public static List<Integer> countGreaterWithStack(int[] arr, int[] indices) {
+        int n = arr.length;
+        int[] greaterCount = new int[n]; // Stores the count of greater elements for each index
+        Stack<Integer> stack = new Stack<>(); // Monotonic decreasing stack
+        List<Integer> result = new ArrayList<>();
         
-        System.out.println(countGreaterBruteForce(arr, indices)); // Output: [6, 1]
+        // Traverse from right to left
+        for (int i = n - 1; i >= 0; i--) {
+            // Remove smaller elements from the stack
+            while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+                stack.pop();
+            }
+            
+            // The number of greater elements to the right is the current stack size
+            greaterCount[i] = stack.size();
+            
+            // Push current element into the stack
+            stack.push(arr[i]);
+        }
+        
+        // Answer queries in O(1) using precomputed greaterCount[]
+        for (int index : indices) {
+            result.add(greaterCount[index]);
+        }
+        
+        return result;
     }
+
 }
+
+
 
