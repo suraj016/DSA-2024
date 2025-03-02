@@ -23,6 +23,32 @@ Output: [-1, -1, -1, -1]
 Explanation: There is no greater element for any of the elements in the array, so all are -1.
 
 
+BRUTE FORCE APPROACH
+
+public static int[] findNextGreaterElementsBruteForce(int[] arr) {
+    int n = arr.length;
+    int[] nge = new int[n]; // Array to store results
+
+    // Loop through each element in the array
+    for (int i = 0; i < n; i++) {
+        nge[i] = -1; // Default value if no greater element is found
+
+        // Check the next elements for a greater value
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] > arr[i]) {
+                nge[i] = arr[j]; // First greater element found
+                break; // Stop once we find the next greater element
+            }
+        }
+    }
+
+    return nge;
+}
+
+time complexity - o(n*2)
+space complexity - O(1)
+
+
 OPTIMIZED SOLUTION
 
 public static int[] findNextGreaterElements(int[] arr) {
@@ -51,3 +77,7 @@ public static int[] findNextGreaterElements(int[] arr) {
 
     return nge;
 }
+
+
+time complexity = o(n)
+space complexity = O(n)
